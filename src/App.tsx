@@ -1,6 +1,6 @@
 import { ChakraProvider, theme } from "@chakra-ui/react";
 import { BrowserRouter } from "react-router-dom";
-import { ColorModeSwitcher } from "./ColorModeSwitcher";
+import { ColorModeSwitcher } from "./components/";
 import { Router } from "./Router";
 
 export const App = () => (

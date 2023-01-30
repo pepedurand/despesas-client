@@ -1,8 +1,8 @@
 import { Box, IconButton, useDisclosure } from "@chakra-ui/react";
-import { FloatingWindow, TotalCard } from "../../components";
-import { despesasMock } from "../../mocks/despesas.list";
-import { tipoDespesa } from "../../types";
 import { AddIcon } from "@chakra-ui/icons";
+import { FloatingWindow, TotalCard } from "../../components";
+import { despesasMock } from "../../mocks/";
+import { tipoDespesa } from "../../types";
 import { purpleColor } from "../../utils";
 
 export const HomePage = () => {

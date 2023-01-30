@@ -1,6 +1,5 @@
 import { Box, Text } from "@chakra-ui/react";
-import { Despesas } from "../../types/despesas";
-import { tipoDespesa } from "../../types";
+import { Despesas, tipoDespesa } from "../../types/";
 import { greenColor, realFormatter, redColor } from "../../utils";
 
 interface TotalCardProps {
