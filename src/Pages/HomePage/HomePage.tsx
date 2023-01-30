@@ -1,6 +1,6 @@
 import { Box, IconButton, useDisclosure } from "@chakra-ui/react";
 import { AddIcon } from "@chakra-ui/icons";
-import { FloatingWindow, TotalCard } from "../../components";
+import { FloatingWindow, TotalCard, AddDespesaForm } from "../../components";
 import { despesasMock } from "../../mocks/";
 import { tipoDespesa } from "../../types";
 import { purpleColor } from "../../utils";
@@ -29,7 +29,7 @@ export const HomePage = () => {
       />
       <FloatingWindow
         title="Adicionar despesa"
-        body={<p>Oi</p>}
+        body={<AddDespesaForm />}
         isOpen={isOpen}
         onClose={onClose}
       />
