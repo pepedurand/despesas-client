@@ -1,14 +1,12 @@
 import { useForm, FormProvider } from "react-hook-form";
 import { FormInput } from "../FormInput";
-// import { Button, useToast } from "@chakra-ui/react";
 import { despesaSchema } from "./validator/despesaSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { SelectDespesaType } from "../SelectDespesaType";
-import { Box } from "@chakra-ui/react";
+import { Box, Button } from "@chakra-ui/react";
+import { purpleColor } from "../../utils";
+import { RadioSelect } from "../RadioSelect";
 
 export const AddDespesaForm = () => {
-  // const toast = useToast();
-
   const methods = useForm({
     mode: "onSubmit",
     resolver: yupResolver(despesaSchema),
@@ -35,7 +33,7 @@ export const AddDespesaForm = () => {
             id="description"
           />
           <FormInput
-            placeholder="dd/mm/aa"
+            placeholder="dd/mm/aaaa"
             htmlFor="date"
             label="Data"
             name="date"
@@ -49,7 +47,23 @@ export const AddDespesaForm = () => {
             name="value"
             id="value"
           />
-          <SelectDespesaType name="" />
+          <RadioSelect
+            name="despesaType"
+            control={methods.control}
+            options={["Despesa", "Ganho"]}
+          />
+          <Button
+            color={"white"}
+            backgroundColor={purpleColor}
+            _hover={{ bg: "#9022FF" }}
+            mr={3}
+            type="submit"
+            width="300px"
+            height="60px"
+            onSubmit={onSubmitForm}
+          >
+            Adicionar
+          </Button>
         </FormProvider>
       </form>
     </Box>

@@ -8,7 +8,6 @@ import {
   ModalHeader,
   ModalOverlay,
 } from "@chakra-ui/react";
-import { purpleColor } from "../../utils";
 
 interface WindowProps {
   title?: string;
@@ -43,17 +42,6 @@ export const FloatingWindow = ({
           alignItems="center"
           gap="2"
         >
-          <Button
-            color={"white"}
-            backgroundColor={purpleColor}
-            _hover={{ bg: "#9022FF" }}
-            mr={3}
-            onClick={onClose}
-            width="300px"
-            height="60px"
-          >
-            Adicionar
-          </Button>
           <Button onClick={onClose} variant="unstyled">
             Cancelar
           </Button>

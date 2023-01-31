@@ -9,7 +9,7 @@ interface despesaData {
 export const despesaSchema: yup.SchemaOf<despesaData> = yup
   .object()
   .shape({
-    description: yup.string().email().required(),
+    description: yup.string().required(),
     date: yup.date().required(),
     value: yup.number().required(),
   })

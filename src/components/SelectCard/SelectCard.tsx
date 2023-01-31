@@ -9,6 +9,8 @@ export const SelectCard = (props: any) => {
     <Box as="label">
       <input {...input} />
       <Box
+        gap="1"
+        textAlign="center"
         {...checkbox}
         cursor="pointer"
         borderRadius="md"
@@ -21,8 +23,8 @@ export const SelectCard = (props: any) => {
         _focus={{
           boxShadow: "outline",
         }}
-        px={12}
         py={3}
+        marginBottom="20px"
       >
         {props.children}
       </Box>

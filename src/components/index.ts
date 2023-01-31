@@ -3,5 +3,4 @@ export * from "./FloatingWindow";
 export * from "./ColorModeSwitcher";
 export * from "./AddDespesaForm";
 export * from "./FormInput";
-export * from "./SelectDespesaType";
 export * from "./SelectCard";
