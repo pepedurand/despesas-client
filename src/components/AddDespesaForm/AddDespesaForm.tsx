@@ -1,10 +1,10 @@
+import { useEffect } from "react";
+import { purpleColor } from "../../utils";
 import { useForm, FormProvider } from "react-hook-form";
-import { FormInput } from "../FormInput";
-import { despesaSchema } from "./validator/despesaSchema";
+import { despesaSchema } from "./validator/";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Box, Button } from "@chakra-ui/react";
-import { purpleColor } from "../../utils";
-import { RadioSelect } from "../RadioSelect";
+import { RadioSelect, FormInput } from "../../components";
 
 export const AddDespesaForm = () => {
   const methods = useForm({
@@ -15,6 +15,22 @@ export const AddDespesaForm = () => {
   const onSubmitForm = async () => {
     console.log(methods.getValues());
   };
+
+  let value = methods.getValues("value");
+
+  const formatCurrencyInput = () => {
+    value = value.replace(/\D/g, "");
+    value = value.replace(/(\d)(\d{0,2})$/, "$1,$2");
+    value = value.replace(/(?=(\d{3})+(\D))\B/g, ".");
+    return `R$ ${value}`;
+  };
+
+  useEffect(() => {
+    if (value) {
+      methods.setValue("value", formatCurrencyInput());
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [methods.watch("value")]);
 
   return (
     <Box
@@ -42,6 +58,7 @@ export const AddDespesaForm = () => {
           />
           <FormInput
             placeholder="R$ xx,xx"
+            isCurrency
             htmlFor="value"
             label="Valor"
             name="value"
