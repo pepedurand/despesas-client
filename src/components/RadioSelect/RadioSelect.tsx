@@ -35,7 +35,12 @@ export const RadioSelect = ({ name, control, options }: RadioSelectProps) => {
             {options.map((value) => {
               const radio = getRadioProps({ value });
               return (
-                <Box width="150px" {...group} {...register(name)}>
+                <Box
+                  width="150px"
+                  {...group}
+                  {...register(name)}
+                  key={`Box_${value}`}
+                >
                   <SelectCard
                     value={value}
                     key={value}

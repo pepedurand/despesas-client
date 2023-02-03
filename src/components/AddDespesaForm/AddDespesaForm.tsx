@@ -18,17 +18,21 @@ export const AddDespesaForm = () => {
 
   let value = methods.getValues("value");
 
-  const formatCurrencyInput = () => {
-    value = value.replace(/\D/g, "");
-    value = value.replace(/(\d)(\d{0,2})$/, "$1,$2");
-    value = value.replace(/(?=(\d{3})+(\D))\B/g, ".");
-    return `R$ ${value}`;
+  const formatCurrencyInput = (amount: string) => {
+    amount = amount.replace(/\D/g, "");
+    amount = amount.replace(/(\d)(\d{0,2})$/, "$1,$2");
+    amount = amount.replace(/(?=(\d{3})+(\D))\B/g, ".");
+    return `R$ ${amount}`;
   };
 
   useEffect(() => {
-    if (value) {
-      methods.setValue("value", formatCurrencyInput());
+    if (!value) {
+      methods.setValue("value", "");
     }
+    if (value) {
+      methods.setValue("value", formatCurrencyInput(value));
+    }
+    console.log(value);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [methods.watch("value")]);
 
@@ -56,13 +60,15 @@ export const AddDespesaForm = () => {
             id="date"
             type="date"
           />
+
           <FormInput
             placeholder="R$ xx,xx"
-            isCurrency
             htmlFor="value"
             label="Valor"
             name="value"
             id="value"
+            type="text"
+            textAlign="right"
           />
           <RadioSelect
             name="despesaType"

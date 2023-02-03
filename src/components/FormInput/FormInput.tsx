@@ -12,7 +12,6 @@ interface FormInputProps extends InputProps {
   htmlFor: string;
   label: string;
   name: string;
-  isCurrency?: boolean;
 }
 
 export const FormInput = ({
@@ -20,7 +19,6 @@ export const FormInput = ({
   label,
   name,
   placeholder,
-  isCurrency,
 }: FormInputProps) => {
   const { register, getFieldState, formState } = useFormContext();
   const fieldState = getFieldState(name, formState);
