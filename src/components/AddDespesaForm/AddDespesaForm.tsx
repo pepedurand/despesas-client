@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { purpleColor } from "../../utils";
+import { formatCurrency, purpleColor } from "../../utils";
 import { useForm, FormProvider } from "react-hook-form";
 import { despesaSchema } from "./validator/";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -12,17 +12,14 @@ export const AddDespesaForm = () => {
     resolver: yupResolver(despesaSchema),
   });
 
+  const value = methods.getValues("value");
+
   const onSubmitForm = async () => {
-    console.log(methods.getValues());
-  };
-
-  let value = methods.getValues("value");
-
-  const formatCurrencyInput = (amount: string) => {
-    amount = amount.replace(/\D/g, "");
-    amount = amount.replace(/(\d)(\d{0,2})$/, "$1,$2");
-    amount = amount.replace(/(?=(\d{3})+(\D))\B/g, ".");
-    return `R$ ${amount}`;
+    const launchBody = {
+      ...methods.getValues(),
+      value: parseInt(value.replace(/\D+/g, "")) / 100,
+    };
+    console.log(launchBody);
   };
 
   useEffect(() => {
@@ -30,11 +27,9 @@ export const AddDespesaForm = () => {
       methods.setValue("value", "");
     }
     if (value) {
-      methods.setValue("value", formatCurrencyInput(value));
+      methods.setValue("value", formatCurrency(value));
     }
-    console.log(value);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [methods.watch("value")]);
+  }, [methods, value]);
 
   return (
     <Box
@@ -60,7 +55,6 @@ export const AddDespesaForm = () => {
             id="date"
             type="date"
           />
-
           <FormInput
             placeholder="R$ xx,xx"
             htmlFor="value"
