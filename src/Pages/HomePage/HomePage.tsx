@@ -1,14 +1,10 @@
 import { Box, IconButton, useDisclosure } from "@chakra-ui/react";
 import { AddIcon } from "@chakra-ui/icons";
-import {
-  FloatingWindow,
-  TotalCard,
-  AddDespesaForm,
-  MonthPicker,
-} from "../../components";
+import { FloatingWindow, TotalCard, AddDespesaForm } from "../../components";
 import { despesasMock } from "../../mocks/";
 import { tipoDespesa } from "../../types";
 import { purpleColor } from "../../utils";
+import { MonthPicker } from "../../components/CollapsibleMenu/MonthPicker";
 
 export const HomePage = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();

@@ -5,4 +5,3 @@ export * from "./AddDespesaForm";
 export * from "./FormInput";
 export * from "./SelectCard";
 export * from "./RadioSelect";
-export * from "./MonthPicker";
