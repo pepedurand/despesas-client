@@ -11,21 +11,17 @@ import {
   Text,
   useDisclosure,
 } from "@chakra-ui/react";
-import { useState } from "react";
-import { months, MonthsEnum, purpleColor } from "../../utils";
+import { useFilterByMonthAndYear } from "../../hooks/useFilterByMonthAndYear";
+import { months, purpleColor } from "../../utils";
 
 export const MonthPicker = () => {
   const { isOpen, onToggle, onClose, onOpen } = useDisclosure();
-  const [selectedMonth, setSelectedMonth] = useState<string | undefined>(
-    undefined
-  );
+  const { month, setMonth } = useFilterByMonthAndYear();
 
   const onSelectMonth = (month: string) => {
-    setSelectedMonth(month);
+    setMonth(month);
     onToggle();
   };
-
-  const actualMonth = MonthsEnum[new Date().getMonth()];
 
   return (
     <Box w="300px">
@@ -36,7 +32,7 @@ export const MonthPicker = () => {
         variant="outline"
         outlineColor={purpleColor}
       >
-        {selectedMonth ?? actualMonth}
+        {month}
       </Button>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />

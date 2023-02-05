@@ -1,11 +1,10 @@
 import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
 import { Box, Text } from "@chakra-ui/react";
-import { useState } from "react";
+import { useFilterByMonthAndYear } from "../../hooks/useFilterByMonthAndYear";
 import { purpleColor } from "../../utils";
 
 export const YearPicker = () => {
-  const actualYear = new Date().getFullYear();
-  const [year, setYear] = useState(actualYear);
+  const { year, setYear } = useFilterByMonthAndYear();
   const nextYear = () => {
     setYear(year + 1);
   };
