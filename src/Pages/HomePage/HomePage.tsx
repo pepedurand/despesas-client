@@ -6,6 +6,7 @@ import {
   AddDespesaForm,
   MonthPicker,
   YearPicker,
+  DespesaList,
 } from "../../components";
 import { despesasMock } from "../../mocks/";
 import { tipoDespesa } from "../../types";
@@ -45,6 +46,7 @@ export const HomePage = () => {
         <YearPicker />
         <MonthPicker />
       </Box>
+      <DespesaList />
     </Box>
   );
 };
