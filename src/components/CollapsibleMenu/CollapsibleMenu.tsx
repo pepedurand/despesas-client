@@ -9,7 +9,7 @@ interface CollapsibleMenuProps {
 export const CollapsibleMenu = ({ title, children }: CollapsibleMenuProps) => {
   const { isOpen, onToggle } = useDisclosure();
   return (
-    <Box w="300px" margin="10px 20px">
+    <Box w="300px">
       <Box
         cursor="pointer"
         display="flex"

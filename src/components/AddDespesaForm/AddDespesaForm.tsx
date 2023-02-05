@@ -12,8 +12,6 @@ export const AddDespesaForm = () => {
     resolver: yupResolver(despesaSchema),
   });
 
-  const value = methods.getValues("value");
-
   const onSubmitForm = async () => {
     const launchBody = {
       ...methods.getValues(),
@@ -22,14 +20,13 @@ export const AddDespesaForm = () => {
     console.log(launchBody);
   };
 
+  const value = methods.getValues("value");
   useEffect(() => {
-    if (!value) {
-      methods.setValue("value", "");
-    }
     if (value) {
       methods.setValue("value", formatCurrency(value));
     }
-  }, [value]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [methods.watch("value")]);
 
   return (
     <Box
@@ -55,6 +52,7 @@ export const AddDespesaForm = () => {
             id="date"
             type="date"
           />
+
           <FormInput
             placeholder="R$ xx,xx"
             htmlFor="value"
