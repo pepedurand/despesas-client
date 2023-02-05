@@ -29,7 +29,7 @@ export const AddDespesaForm = () => {
     if (value) {
       methods.setValue("value", formatCurrency(value));
     }
-  }, [methods, value]);
+  }, [value]);
 
   return (
     <Box

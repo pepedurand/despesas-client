@@ -1,6 +1,11 @@
 import { Box, IconButton, useDisclosure } from "@chakra-ui/react";
 import { AddIcon } from "@chakra-ui/icons";
-import { FloatingWindow, TotalCard, AddDespesaForm } from "../../components";
+import {
+  FloatingWindow,
+  TotalCard,
+  AddDespesaForm,
+  DespesaList,
+} from "../../components";
 import { despesasMock } from "../../mocks/";
 import { tipoDespesa } from "../../types";
 import { purpleColor } from "../../utils";
@@ -24,7 +29,9 @@ export const HomePage = () => {
         _hover={{ bg: "#9022FF" }}
         aria-label="Search database"
         icon={<AddIcon />}
-        size={"lg"}
+        borderRadius="100%"
+        height="80px"
+        width="80px"
         onClick={onOpen}
       />
       <FloatingWindow
@@ -33,6 +40,7 @@ export const HomePage = () => {
         isOpen={isOpen}
         onClose={onClose}
       />
+      <DespesaList />
     </Box>
   );
 };
