@@ -16,11 +16,10 @@ import { months, purpleColor } from "../../utils";
 
 export const MonthPicker = () => {
   const { isOpen, onToggle, onClose, onOpen } = useDisclosure();
-  const { month, setMonth, filterData } = useDatePicker();
+  const { month, setMonth } = useDatePicker();
 
   const onSelectMonth = (month: string) => {
     setMonth(month);
-    filterData();
     onToggle();
   };
 

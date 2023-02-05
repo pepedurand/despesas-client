@@ -4,14 +4,12 @@ import { useDatePicker } from "../../hooks/useDatePicker";
 import { purpleColor } from "../../utils";
 
 export const YearPicker = () => {
-  const { year, setYear, filterData } = useDatePicker();
+  const { year, setYear } = useDatePicker();
   const nextYear = () => {
     setYear(year + 1);
-    filterData();
   };
   const previousYear = () => {
     setYear(year - 1);
-    filterData();
   };
   return (
     <Box
