@@ -6,3 +6,4 @@ export * from "./FormInput";
 export * from "./SelectCard";
 export * from "./RadioSelect";
 export * from "./MonthPicker";
+export * from "./YearPicker";

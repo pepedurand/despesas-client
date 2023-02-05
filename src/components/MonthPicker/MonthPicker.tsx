@@ -1,3 +1,4 @@
+import { ChevronDownIcon } from "@chakra-ui/icons";
 import {
   Box,
   Button,
@@ -11,14 +12,13 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import { useState } from "react";
-import { months } from "../../utils";
+import { months, purpleColor } from "../../utils";
 
 export const MonthPicker = () => {
   const { isOpen, onToggle, onClose, onOpen } = useDisclosure();
   const [selectedMonth, setSelectedMonth] = useState<string | undefined>(
     undefined
   );
-  const todaysMonth = new Date().getMonth();
 
   const onSelectMonth = (month: string) => {
     setSelectedMonth(month);
@@ -27,7 +27,13 @@ export const MonthPicker = () => {
 
   return (
     <Box w="300px" margin="20px 0">
-      <Button width="300px" onClick={onOpen}>
+      <Button
+        width="300px"
+        onClick={onOpen}
+        rightIcon={<ChevronDownIcon />}
+        variant="outline"
+        outlineColor={purpleColor}
+      >
         {selectedMonth ?? "Selecione o mês"}
       </Button>
       <Modal isOpen={isOpen} onClose={onClose}>

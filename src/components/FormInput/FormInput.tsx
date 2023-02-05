@@ -39,7 +39,7 @@ export const FormInput = ({
         {...register(name)}
         height="80px"
         outline="1px"
-        focusBorderColor={`${purpleColor}`}
+        focusBorderColor={purpleColor}
       />
       <FormHelperText color="red">
         {!!fieldState.error && <>{fieldState.error?.message}</>}
