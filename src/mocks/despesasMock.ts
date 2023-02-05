@@ -41,4 +41,14 @@ export const despesasMock: Despesas[] = [
     updatedAt: new Date(2022, 10, 3),
     __v: 0,
   },
+  {
+    _id: "63d6f7c327c4bcb0f8c7ee0b",
+    description: "Lancamento 1",
+    value: 301.2,
+    type: tipoDespesa.EXPENSE,
+    dataDespesa: new Date(),
+    createdAt: new Date(2022, 10, 3),
+    updatedAt: new Date(2022, 10, 3),
+    __v: 0,
+  },
 ];

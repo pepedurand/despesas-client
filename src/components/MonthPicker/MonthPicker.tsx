@@ -11,15 +11,16 @@ import {
   Text,
   useDisclosure,
 } from "@chakra-ui/react";
-import { useFilterByMonthAndYear } from "../../hooks/useFilterByMonthAndYear";
+import { useDatePicker } from "../../hooks/useDatePicker";
 import { months, purpleColor } from "../../utils";
 
 export const MonthPicker = () => {
   const { isOpen, onToggle, onClose, onOpen } = useDisclosure();
-  const { month, setMonth } = useFilterByMonthAndYear();
+  const { month, setMonth, filterData } = useDatePicker();
 
   const onSelectMonth = (month: string) => {
     setMonth(month);
+    filterData();
     onToggle();
   };
 

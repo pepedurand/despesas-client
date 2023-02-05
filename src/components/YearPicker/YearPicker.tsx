@@ -1,15 +1,17 @@
 import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
 import { Box, Text } from "@chakra-ui/react";
-import { useFilterByMonthAndYear } from "../../hooks/useFilterByMonthAndYear";
+import { useDatePicker } from "../../hooks/useDatePicker";
 import { purpleColor } from "../../utils";
 
 export const YearPicker = () => {
-  const { year, setYear } = useFilterByMonthAndYear();
+  const { year, setYear, filterData } = useDatePicker();
   const nextYear = () => {
     setYear(year + 1);
+    filterData();
   };
   const previousYear = () => {
     setYear(year - 1);
+    filterData();
   };
   return (
     <Box
