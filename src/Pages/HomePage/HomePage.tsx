@@ -4,7 +4,7 @@ import {
   FloatingWindow,
   TotalCard,
   AddDespesaForm,
-  DespesaList,
+  MonthPicker,
 } from "../../components";
 import { despesasMock } from "../../mocks/";
 import { tipoDespesa } from "../../types";
@@ -40,7 +40,7 @@ export const HomePage = () => {
         isOpen={isOpen}
         onClose={onClose}
       />
-      <DespesaList />
+      <MonthPicker />
     </Box>
   );
 };

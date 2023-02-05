@@ -18,13 +18,18 @@ export const CollapsibleMenu = ({ title, children }: CollapsibleMenuProps) => {
         padding="10px"
         onClick={onToggle}
       >
-        <Text fontSize="30px">
+        {isOpen ? (
+          <ChevronDownIcon width="50px" />
+        ) : (
+          <ChevronUpIcon width="50px" />
+        )}
+        <Text fontSize="20px">
           <>{title}</>
         </Text>
         {isOpen ? (
-          <ChevronUpIcon width="50px" />
-        ) : (
           <ChevronDownIcon width="50px" />
+        ) : (
+          <ChevronUpIcon width="50px" />
         )}
       </Box>
       <Collapse in={isOpen} animateOpacity>
