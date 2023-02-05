@@ -5,6 +5,7 @@ import {
   TotalCard,
   AddDespesaForm,
   MonthPicker,
+  YearPicker,
 } from "../../components";
 import { despesasMock } from "../../mocks/";
 import { tipoDespesa } from "../../types";
@@ -40,7 +41,10 @@ export const HomePage = () => {
         isOpen={isOpen}
         onClose={onClose}
       />
-      <MonthPicker />
+      <Box display={"flex"} gap={5} flexDirection={"column"} margin={"20px"}>
+        <YearPicker />
+        <MonthPicker />
+      </Box>
     </Box>
   );
 };
