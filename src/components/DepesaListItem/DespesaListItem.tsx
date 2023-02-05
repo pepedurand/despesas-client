@@ -27,7 +27,7 @@ export const DespesaListItem = ({
     >
       <Text>{description}</Text>
       <Text>{formattedDate}</Text>
-      <Text>{value}</Text>
+      <Text>{`R$ ${value.toFixed(2)}`}</Text>
     </Box>
   );
 };
