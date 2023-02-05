@@ -8,3 +8,4 @@ export * from "./RadioSelect";
 export * from "./MonthPicker";
 export * from "./YearPicker";
 export * from "./DespesaList";
+export * from "./DepesaListItem";
