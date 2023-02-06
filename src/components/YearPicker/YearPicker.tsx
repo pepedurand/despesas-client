@@ -1,10 +1,13 @@
 import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
 import { Box, Text } from "@chakra-ui/react";
-import { useDatePicker } from "../../hooks/useDatePicker";
 import { purpleColor } from "../../utils";
 
-export const YearPicker = () => {
-  const { year, setYear } = useDatePicker();
+interface YearPickerProps {
+  year: number;
+  setYear: React.Dispatch<React.SetStateAction<number>>;
+}
+
+export const YearPicker = ({ year, setYear }: YearPickerProps) => {
   const nextYear = () => {
     setYear(year + 1);
   };

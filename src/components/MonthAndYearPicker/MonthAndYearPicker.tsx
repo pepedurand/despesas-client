@@ -6,6 +6,7 @@ import {
   ModalBody,
   ModalCloseButton,
   ModalContent,
+  ModalFooter,
   ModalHeader,
   ModalOverlay,
   Text,
@@ -17,10 +18,11 @@ import { YearPicker } from "../YearPicker";
 
 export const MonthAndYearPicker = () => {
   const { isOpen, onToggle, onClose, onOpen } = useDisclosure();
-  const { monthString, setMonthString } = useDatePicker();
+  const { monthString, setMonthString, year, setYear } = useDatePicker();
 
-  const onSelectMonth = (month: string) => {
+  const onClickSaveButton = (month: string, year: number) => {
     setMonthString(month);
+    setYear(year);
     onToggle();
   };
 
@@ -33,7 +35,7 @@ export const MonthAndYearPicker = () => {
         variant="outline"
         outlineColor={purpleColor}
       >
-        {monthString}
+        {`${monthString} de ${year}`}
       </Button>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
@@ -47,7 +49,7 @@ export const MonthAndYearPicker = () => {
               justifyContent={"center"}
               alignItems={"center"}
             >
-              <YearPicker />
+              <YearPicker setYear={setYear} year={year} />
               {months.map((month) => {
                 return (
                   <Text
@@ -57,7 +59,12 @@ export const MonthAndYearPicker = () => {
                       background: "white",
                       color: "teal.500",
                     }}
-                    onClick={() => onSelectMonth(month)}
+                    backgroundColor={
+                      monthString === month ? "white" : undefined
+                    }
+                    color={monthString === month ? "teal.500" : undefined}
+                    onClick={() => setMonthString(month)}
+                    width={"200px"}
                   >
                     {month}
                   </Text>
@@ -65,6 +72,16 @@ export const MonthAndYearPicker = () => {
               })}
             </Box>
           </ModalBody>
+          <ModalFooter>
+            <Button
+              colorScheme="blue"
+              mr={3}
+              onClick={() => onClickSaveButton(monthString, year)}
+            >
+              Buscar
+            </Button>
+            <Button variant="ghost">Cancelar</Button>
+          </ModalFooter>
         </ModalContent>
       </Modal>
     </Box>
