@@ -8,12 +8,15 @@ import {
   YearPicker,
   DespesaList,
 } from "../../components";
-import { despesasMock } from "../../mocks/";
 import { tipoDespesa } from "../../types";
 import { purpleColor } from "../../utils";
+import { useRequestData } from "../../hooks";
+import { getAllDespesas } from "../../services";
 
 export const HomePage = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const despesas = useRequestData(getAllDespesas());
 
   return (
     <Box
@@ -23,8 +26,8 @@ export const HomePage = () => {
       flexDirection="column"
       marginTop="20px"
     >
-      <TotalCard despesas={despesasMock} creditOrDebit={tipoDespesa.CREDIT} />
-      <TotalCard despesas={despesasMock} creditOrDebit={tipoDespesa.EXPENSE} />
+      <TotalCard despesas={despesas} creditOrDebit={tipoDespesa.CREDIT} />
+      <TotalCard despesas={despesas} creditOrDebit={tipoDespesa.EXPENSE} />
       <IconButton
         color={"white"}
         backgroundColor={purpleColor}
@@ -46,7 +49,7 @@ export const HomePage = () => {
         <YearPicker />
         <MonthPicker />
       </Box>
-      <DespesaList />
+      <DespesaList despesas={despesas} />
     </Box>
   );
 };

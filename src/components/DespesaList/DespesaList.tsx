@@ -1,9 +1,10 @@
-import { useRequestData } from "../../hooks/useRequestData";
-import { getAllDespesas } from "../../services/";
 import { DespesaListItem } from "../../components";
+import { Despesas } from "../../types";
 
-export const DespesaList = () => {
-  const despesas = useRequestData(getAllDespesas());
+interface DespesaListProps {
+  despesas: Despesas[];
+}
+export const DespesaList = ({ despesas }: DespesaListProps) => {
   return (
     <>
       {despesas.map((despesa) => {
