@@ -4,8 +4,7 @@ import {
   FloatingWindow,
   TotalCard,
   AddDespesaForm,
-  MonthPicker,
-  YearPicker,
+  MonthAndYearPicker,
   DespesaList,
 } from "../../components";
 import { tipoDespesa } from "../../types";
@@ -46,8 +45,7 @@ export const HomePage = () => {
         onClose={onClose}
       />
       <Box display={"flex"} gap={5} flexDirection={"column"} margin={"20px"}>
-        <YearPicker />
-        <MonthPicker />
+        <MonthAndYearPicker />
       </Box>
       <DespesaList despesas={despesas} />
     </Box>

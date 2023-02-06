@@ -13,8 +13,9 @@ import {
 } from "@chakra-ui/react";
 import { useDatePicker } from "../../hooks/useDatePicker";
 import { months, purpleColor } from "../../utils";
+import { YearPicker } from "../YearPicker";
 
-export const MonthPicker = () => {
+export const MonthAndYearPicker = () => {
   const { isOpen, onToggle, onClose, onOpen } = useDisclosure();
   const { monthString, setMonthString } = useDatePicker();
 
@@ -37,24 +38,32 @@ export const MonthPicker = () => {
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Selecione o mês</ModalHeader>
+          <ModalHeader>Selecione o mês e o ano</ModalHeader>
           <ModalCloseButton />
           <ModalBody paddingBottom="20px">
-            {months.map((month) => {
-              return (
-                <Text
-                  textAlign="center"
-                  padding="10px"
-                  _hover={{
-                    background: "white",
-                    color: "teal.500",
-                  }}
-                  onClick={() => onSelectMonth(month)}
-                >
-                  {month}
-                </Text>
-              );
-            })}
+            <Box
+              display={"flex"}
+              flexDirection={"column"}
+              justifyContent={"center"}
+              alignItems={"center"}
+            >
+              <YearPicker />
+              {months.map((month) => {
+                return (
+                  <Text
+                    textAlign="center"
+                    padding="10px"
+                    _hover={{
+                      background: "white",
+                      color: "teal.500",
+                    }}
+                    onClick={() => onSelectMonth(month)}
+                  >
+                    {month}
+                  </Text>
+                );
+              })}
+            </Box>
           </ModalBody>
         </ModalContent>
       </Modal>
