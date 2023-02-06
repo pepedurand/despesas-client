@@ -15,19 +15,30 @@ export const DespesaListItem = ({
   value,
   type,
 }: DespesaListItemProps) => {
-  const formatDate = new Intl.DateTimeFormat("pt-br");
+  const formatDate = new Intl.DateTimeFormat("pt-br", {
+    month: "2-digit",
+    year: "2-digit",
+  });
   const formattedDate = formatDate.format(dataDespesa);
 
   return (
     <Box
       display={"flex"}
-      justifyContent={"space-around"}
-      width={"300px"}
+      justifyContent={"space-between"}
+      alignItems={"center"}
       color={type === tipoDespesa.CREDIT ? greenColor : redColor}
     >
-      <Text>{description}</Text>
-      <Text>{formattedDate}</Text>
-      <Text>{`R$ ${value.toFixed(2)}`}</Text>
+      <Text padding={"10px"} width={"140px"} textAlign={"left"}>
+        {description}
+      </Text>
+      <Text padding={"10px"} width={"100px"} textAlign={"center"}>
+        {formattedDate}
+      </Text>
+      <Text
+        padding={"10px"}
+        width={"120px"}
+        textAlign={"right"}
+      >{`R$ ${value.toFixed(2)}`}</Text>
     </Box>
   );
 };
