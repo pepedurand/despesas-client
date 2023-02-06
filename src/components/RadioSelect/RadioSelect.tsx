@@ -1,5 +1,4 @@
 import { useRadioGroup, HStack, Box } from "@chakra-ui/react";
-import { useDespesaTypeHandler } from "../../hooks";
 import { greenColor, purpleColor, redColor } from "../../utils";
 import { SelectCard } from "../SelectCard";
 
@@ -7,21 +6,21 @@ interface RadioSelectProps {
   options: string[];
   defaultValue: string;
   name: string;
+  setSelectedDespesaType: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export const RadioSelect = ({
   options,
   defaultValue,
   name,
+  setSelectedDespesaType,
 }: RadioSelectProps) => {
-  const { setSelectedDespesaType } = useDespesaTypeHandler();
-
   const { getRootProps, getRadioProps } = useRadioGroup({
     name,
     defaultValue,
     onChange: setSelectedDespesaType,
   });
-
+  //passar setSelect via props do homepage para o radio
   const group = getRootProps();
 
   return (

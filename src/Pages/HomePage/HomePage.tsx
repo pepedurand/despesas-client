@@ -9,14 +9,12 @@ import {
 } from "../../components";
 import { tipoDespesa } from "../../types";
 import { purpleColor } from "../../utils";
-import { useRequestData } from "../../hooks";
-import { getDespesas } from "../../services";
+import { useDespesaTypeHandler } from "../../hooks";
 import { RadioSelect } from "../../components/RadioSelect/RadioSelect";
 
 export const HomePage = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-
-  const despesas = useRequestData(getDespesas());
+  const { despesasToShow, setSelectedDespesaType } = useDespesaTypeHandler();
 
   return (
     <Box
@@ -26,8 +24,11 @@ export const HomePage = () => {
       flexDirection="column"
       marginTop="20px"
     >
-      <TotalCard despesas={despesas} creditOrDebit={tipoDespesa.CREDIT} />
-      <TotalCard despesas={despesas} creditOrDebit={tipoDespesa.EXPENSE} />
+      <TotalCard despesas={despesasToShow} creditOrDebit={tipoDespesa.CREDIT} />
+      <TotalCard
+        despesas={despesasToShow}
+        creditOrDebit={tipoDespesa.EXPENSE}
+      />
       <IconButton
         color={"white"}
         backgroundColor={purpleColor}
@@ -50,8 +51,9 @@ export const HomePage = () => {
         options={["Todos", "Entradas", "Saídas"]}
         defaultValue={"Todos"}
         name={"Tipo de despesa"}
+        setSelectedDespesaType={setSelectedDespesaType}
       />
-      <DespesaList despesas={despesas} />
+      <DespesaList despesas={despesasToShow} />
     </Box>
   );
 };
