@@ -11,12 +11,12 @@ import {
 import { tipoDespesa } from "../../types";
 import { purpleColor } from "../../utils";
 import { useRequestData } from "../../hooks";
-import { getAllDespesas } from "../../services";
+import { getDespesas } from "../../services";
 
 export const HomePage = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const despesas = useRequestData(getAllDespesas());
+  const despesas = useRequestData(getDespesas());
 
   return (
     <Box
