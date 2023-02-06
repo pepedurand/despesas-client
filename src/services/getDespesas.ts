@@ -2,7 +2,7 @@ import axios from "axios";
 import { tipoDespesa } from "../types";
 import { baseUrl } from "../utils/constants/baseUrl";
 
-interface getAllDespesasProps {
+interface getDespesasProps {
   type?: tipoDespesa;
   month?: number;
   year?: number;
@@ -12,7 +12,7 @@ export const getAllDespesas = async ({
   month,
   type,
   year,
-}: getAllDespesasProps) => {
+}: getDespesasProps) => {
   try {
     if (type) {
       const typeUrlParam = type === tipoDespesa.CREDIT ? "creditos" : "debitos";
