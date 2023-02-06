@@ -16,10 +16,10 @@ import { months, purpleColor } from "../../utils";
 
 export const MonthPicker = () => {
   const { isOpen, onToggle, onClose, onOpen } = useDisclosure();
-  const { month, setMonth } = useDatePicker();
+  const { monthString, setMonthString } = useDatePicker();
 
   const onSelectMonth = (month: string) => {
-    setMonth(month);
+    setMonthString(month);
     onToggle();
   };
 
@@ -32,7 +32,7 @@ export const MonthPicker = () => {
         variant="outline"
         outlineColor={purpleColor}
       >
-        {month}
+        {monthString}
       </Button>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
