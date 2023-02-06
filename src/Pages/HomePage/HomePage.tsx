@@ -47,10 +47,9 @@ export const HomePage = () => {
       />
       <MonthAndYearPicker />
       <RadioSelect
-        options={["Entradas", "Saídas", "Todos"]}
+        options={["Todos", "Entradas", "Saídas"]}
         defaultValue={"Todos"}
         name={"Tipo de despesa"}
-        onChange={() => console.log("entrou")}
       />
       <DespesaList despesas={despesas} />
     </Box>
