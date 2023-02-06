@@ -11,6 +11,7 @@ import { tipoDespesa } from "../../types";
 import { purpleColor } from "../../utils";
 import { useRequestData } from "../../hooks";
 import { getDespesas } from "../../services";
+import { RadioSelect } from "../../components/RadioSelect/RadioSelect";
 
 export const HomePage = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -45,6 +46,12 @@ export const HomePage = () => {
         onClose={onClose}
       />
       <MonthAndYearPicker />
+      <RadioSelect
+        options={["Entradas", "Saídas", "Todos"]}
+        defaultValue={"Todos"}
+        name={"Tipo de despesa"}
+        onChange={() => console.log("entrou")}
+      />
       <DespesaList despesas={despesas} />
     </Box>
   );

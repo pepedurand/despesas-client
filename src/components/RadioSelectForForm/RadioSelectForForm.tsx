@@ -50,11 +50,7 @@ export const RadioSelectForForm = ({
                     key={value}
                     {...radio}
                     backgroundColor={
-                      options.length === 2
-                        ? value === "Despesa"
-                          ? redColor
-                          : greenColor
-                        : undefined
+                      value === "Despesa" ? redColor : greenColor
                     }
                   >
                     {value}

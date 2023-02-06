@@ -9,3 +9,4 @@ export * from "./MonthAndYearPicker";
 export * from "./YearPicker";
 export * from "./DespesaList";
 export * from "./DepesaListItem";
+export * from "./RadioSelect";
