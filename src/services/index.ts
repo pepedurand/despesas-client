@@ -1,1 +1,1 @@
-export * from "./getAllDespesas";
+export * from "./getDespesas";
