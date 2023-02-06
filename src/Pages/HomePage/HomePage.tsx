@@ -44,9 +44,7 @@ export const HomePage = () => {
         isOpen={isOpen}
         onClose={onClose}
       />
-      <Box display={"flex"} gap={5} flexDirection={"column"} margin={"20px"}>
-        <MonthAndYearPicker />
-      </Box>
+      <MonthAndYearPicker />
       <DespesaList despesas={despesas} />
     </Box>
   );

@@ -8,13 +8,17 @@ import {
 import { redColor, greenColor } from "../../utils";
 import { SelectCard } from "../SelectCard";
 
-interface RadioSelectProps {
+interface RadioSelectForFormProps {
   name: string;
-  control: Control<FieldValues, any>;
+  control?: Control<FieldValues, any>;
   options: string[];
 }
 
-export const RadioSelect = ({ name, control, options }: RadioSelectProps) => {
+export const RadioSelectForForm = ({
+  name,
+  control,
+  options,
+}: RadioSelectForFormProps) => {
   const { register } = useFormContext();
 
   const { getRootProps, getRadioProps } = useRadioGroup({
@@ -46,7 +50,11 @@ export const RadioSelect = ({ name, control, options }: RadioSelectProps) => {
                     key={value}
                     {...radio}
                     backgroundColor={
-                      value === "Despesa" ? redColor : greenColor
+                      options.length === 2
+                        ? value === "Despesa"
+                          ? redColor
+                          : greenColor
+                        : undefined
                     }
                   >
                     {value}

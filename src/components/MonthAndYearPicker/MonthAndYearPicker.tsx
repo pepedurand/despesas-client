@@ -27,7 +27,7 @@ export const MonthAndYearPicker = () => {
   };
 
   return (
-    <Box w="300px">
+    <Box w="300px" margin={"20px"}>
       <Button
         width="300px"
         onClick={onOpen}

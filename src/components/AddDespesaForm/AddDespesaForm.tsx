@@ -4,7 +4,7 @@ import { useForm, FormProvider } from "react-hook-form";
 import { despesaSchema } from "./validator/";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Box, Button } from "@chakra-ui/react";
-import { RadioSelect, FormInput } from "../../components";
+import { RadioSelectForForm, FormInput } from "../../components";
 
 export const AddDespesaForm = () => {
   const methods = useForm({
@@ -62,7 +62,7 @@ export const AddDespesaForm = () => {
             type="text"
             textAlign="right"
           />
-          <RadioSelect
+          <RadioSelectForForm
             name="despesaType"
             control={methods.control}
             options={["Despesa", "Ganho"]}
