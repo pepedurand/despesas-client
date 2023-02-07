@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { getDespesas, getDespesasByType } from "../services";
 import { Despesas, tipoDespesa } from "../types";
 
-export const useDespesaTypeHandler = () => {
+export const useFilterDespesas = () => {
   const [selectedDespesaType, setSelectedDespesaType] =
     useState<string>("Todos");
   const [despesasToShow, setDespesasToShow] = useState<Despesas[]>([]);
