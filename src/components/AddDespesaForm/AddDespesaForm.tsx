@@ -5,8 +5,17 @@ import { despesaSchema } from "./validator/";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Box, Button } from "@chakra-ui/react";
 import { RadioSelectForForm, FormInput } from "../../components";
+import { postDespesa } from "../../services/postDespesa";
 
-export const AddDespesaForm = () => {
+interface AddDespesaFormProps {
+  onClose: () => void;
+  loadDespesas: () => void;
+}
+
+export const AddDespesaForm = ({
+  onClose,
+  loadDespesas,
+}: AddDespesaFormProps) => {
   const methods = useForm({
     mode: "onSubmit",
     resolver: yupResolver(despesaSchema),
@@ -14,10 +23,14 @@ export const AddDespesaForm = () => {
 
   const onSubmitForm = async () => {
     const launchBody = {
-      ...methods.getValues(),
+      description: methods.getValues("description"),
       value: parseInt(value.replace(/\D+/g, "")) / 100,
+      type: methods.getValues("despesaType"),
+      dataDespesa: methods.getValues("date"),
     };
-    console.log(launchBody);
+    await postDespesa(launchBody);
+    onClose();
+    loadDespesas();
   };
 
   const value = methods.getValues("value");

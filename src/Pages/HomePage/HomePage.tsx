@@ -13,7 +13,7 @@ import { useFilterDespesas } from "../../hooks";
 import { RadioSelect } from "../../components/RadioSelect/RadioSelect";
 
 export const HomePage = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { isOpen, onOpen, onClose, onToggle } = useDisclosure();
   const {
     despesasToShow,
     setSelectedDespesaType,
@@ -21,6 +21,7 @@ export const HomePage = () => {
     setMonth,
     year,
     setYear,
+    loadDespesas,
   } = useFilterDespesas();
 
   return (
@@ -49,7 +50,7 @@ export const HomePage = () => {
       />
       <FloatingWindow
         title="Adicionar despesa"
-        body={<AddDespesaForm />}
+        body={<AddDespesaForm onClose={onToggle} loadDespesas={loadDespesas} />}
         isOpen={isOpen}
         onClose={onClose}
       />
