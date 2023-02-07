@@ -9,13 +9,19 @@ import {
 } from "../../components";
 import { tipoDespesa } from "../../types";
 import { purpleColor } from "../../utils";
-import { useDatePicker, useFilterDespesas } from "../../hooks";
+import { useFilterDespesas } from "../../hooks";
 import { RadioSelect } from "../../components/RadioSelect/RadioSelect";
 
 export const HomePage = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { despesasToShow, setSelectedDespesaType } = useFilterDespesas();
-  const { month, setMonth, year, setYear } = useDatePicker();
+  const {
+    despesasToShow,
+    setSelectedDespesaType,
+    month,
+    setMonth,
+    year,
+    setYear,
+  } = useFilterDespesas();
 
   return (
     <Box

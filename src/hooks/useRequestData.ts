@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export const useRequestData = (requisition: any) => {
+export const useRequestData = (requisition: Promise<any[]>) => {
   const [items, setItems] = useState<any[] | []>([]);
 
   const loadItemList = async () => {
