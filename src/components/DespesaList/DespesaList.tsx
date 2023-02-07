@@ -5,7 +5,6 @@ interface DespesaListProps {
   despesas: Despesas[];
 }
 export const DespesaList = ({ despesas }: DespesaListProps) => {
-  console.log("componente do map", despesas);
   return (
     <>
       {despesas.map((despesa) => {

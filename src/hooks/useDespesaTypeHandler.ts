@@ -20,12 +20,10 @@ export const useDespesaTypeHandler = () => {
       const despesas = await getDespesas();
       setDespesasToShow(despesas);
     }
-    console.log(despesasToShow);
   };
 
   useEffect(() => {
     loadDespesas();
-    console.log("foi");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedDespesaType]);
 
