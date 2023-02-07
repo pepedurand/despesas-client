@@ -12,13 +12,23 @@ import {
   Text,
   useDisclosure,
 } from "@chakra-ui/react";
-import { useDatePicker } from "../../hooks/useDatePicker";
 import { months, purpleColor } from "../../utils";
 import { YearPicker } from "../YearPicker";
 
-export const MonthAndYearPicker = () => {
+interface MonthAndYearPickerProps {
+  monthString: string;
+  setMonthString: React.Dispatch<React.SetStateAction<string>>;
+  year: number;
+  setYear: React.Dispatch<React.SetStateAction<number>>;
+}
+
+export const MonthAndYearPicker = ({
+  monthString,
+  setMonthString,
+  year,
+  setYear,
+}: MonthAndYearPickerProps) => {
   const { isOpen, onToggle, onClose, onOpen } = useDisclosure();
-  const { monthString, setMonthString, year, setYear } = useDatePicker();
 
   const onClickSaveButton = (month: string, year: number) => {
     setMonthString(month);

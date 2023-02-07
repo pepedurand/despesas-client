@@ -9,12 +9,13 @@ import {
 } from "../../components";
 import { tipoDespesa } from "../../types";
 import { purpleColor } from "../../utils";
-import { useDespesaTypeHandler } from "../../hooks";
+import { useDatePicker, useDespesaTypeHandler } from "../../hooks";
 import { RadioSelect } from "../../components/RadioSelect/RadioSelect";
 
 export const HomePage = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { despesasToShow, setSelectedDespesaType } = useDespesaTypeHandler();
+  const { monthString, setMonthString, year, setYear } = useDatePicker();
 
   return (
     <Box
@@ -46,7 +47,12 @@ export const HomePage = () => {
         isOpen={isOpen}
         onClose={onClose}
       />
-      <MonthAndYearPicker />
+      <MonthAndYearPicker
+        monthString={monthString}
+        setMonthString={setMonthString}
+        setYear={setYear}
+        year={year}
+      />
       <RadioSelect
         options={["Todos", "Entradas", "Saídas"]}
         defaultValue={"Todos"}
