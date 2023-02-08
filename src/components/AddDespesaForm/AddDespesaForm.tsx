@@ -5,7 +5,7 @@ import { despesaSchema } from "./validator/";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Box, Button } from "@chakra-ui/react";
 import { RadioSelectForForm, FormInput } from "../../components";
-import { postDespesa } from "../../services/postDespesa";
+import { postDespesa } from "../../services/";
 
 interface AddDespesaFormProps {
   onClose: () => void;

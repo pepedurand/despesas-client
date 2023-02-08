@@ -16,9 +16,10 @@ export const DespesaListItem = ({
   type,
 }: DespesaListItemProps) => {
   const formatDate = new Intl.DateTimeFormat("pt-br", {
-    month: "2-digit",
+    month: "long",
     year: "2-digit",
   });
+
   const formattedDate = formatDate.format(dataDespesa);
 
   return (
@@ -32,7 +33,7 @@ export const DespesaListItem = ({
         {description}
       </Text>
       <Text padding={"10px"} width={"100px"} textAlign={"center"}>
-        {formattedDate}
+        {/* {formattedDate} */}
       </Text>
       <Text
         padding={"10px"}

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import {
   getDespesas,
   getDespesasByMonth,
+  getDespesasByMonthAndType,
   getDespesasByType,
 } from "../services";
 import { Despesas, tipoDespesa } from "../types";
@@ -19,13 +20,33 @@ export const useFilterDespesas = () => {
   const numberMonth = months.indexOf(month) + 1;
 
   const loadDespesas = async () => {
+    console.log(numberMonth, year);
+
     if (selectedDespesaType === "Saídas") {
-      const despesas = await getDespesasByType(tipoDespesa.EXPENSE);
-      setDespesasToShow(despesas);
+      if (month && year) {
+        const despesas = await getDespesasByMonthAndType(
+          selectedDespesaType,
+          numberMonth,
+          year
+        );
+        setDespesasToShow(despesas);
+      } else {
+        const despesas = await getDespesasByType(tipoDespesa.EXPENSE);
+        setDespesasToShow(despesas);
+      }
     }
     if (selectedDespesaType === "Entradas") {
-      const despesas = await getDespesasByType(tipoDespesa.CREDIT);
-      setDespesasToShow(despesas);
+      if (month && year) {
+        const despesas = await getDespesasByMonthAndType(
+          selectedDespesaType,
+          numberMonth,
+          year
+        );
+        setDespesasToShow(despesas);
+      } else {
+        const despesas = await getDespesasByType(tipoDespesa.CREDIT);
+        setDespesasToShow(despesas);
+      }
     }
     if (selectedDespesaType === "Todos") {
       if (month && year) {
